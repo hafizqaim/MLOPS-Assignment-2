@@ -1,0 +1,10 @@
+{
+  "age": 35,
+  "income": 85000,
+  "credit_score": 750,
+  "account_balance": 15000,
+  "tenure_months": 48,
+  "num_products": 3,
+  "has_credit_card": 1,
+  "is_active_member": 1
+}
