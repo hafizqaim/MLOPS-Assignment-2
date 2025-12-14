@@ -58,6 +58,7 @@ logs/
 
 # Environment variables
 .env
+keys/
 
 # Testing
 .pytest_cache/
