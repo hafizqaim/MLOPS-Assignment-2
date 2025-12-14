@@ -33,11 +33,21 @@ jobs:
     - name: Verify dataset exists
       run: |
         if [ ! -f data/dataset.csv ]; then
-          echo "Dataset not found, creating sample data..."
+          echo "Dataset not found, creating sample data with 30 rows..."
           mkdir -p data
           echo "customer_id,age,income,credit_score,account_balance,tenure_months,num_products,has_credit_card,is_active_member,churn" > data/dataset.csv
-          echo "1,35,50000,700,5000,24,2,1,1,0" >> data/dataset.csv
-          echo "2,45,60000,650,3000,12,1,0,0,1" >> data/dataset.csv
+          for i in {1..30}; do
+            age=$((25 + RANDOM % 40))
+            income=$((30000 + RANDOM % 70000))
+            credit=$((550 + RANDOM % 250))
+            balance=$((1000 + RANDOM % 20000))
+            tenure=$((1 + RANDOM % 60))
+            products=$((1 + RANDOM % 4))
+            has_card=$((RANDOM % 2))
+            is_active=$((RANDOM % 2))
+            churn=$((RANDOM % 2))
+            echo "$i,$age,$income,$credit,$balance,$tenure,$products,$has_card,$is_active,$churn" >> data/dataset.csv
+          done
         fi
         
     - name: Run linting with flake8
